@@ -59,7 +59,7 @@ Assuming your project directory is the current working directory:
 3.  **Download Model Files:**
     The noise cancellation plugin requires local model files.
     ```bash
-    uv run agent.py download-files
+    uv run main.py download-files
     ```
 
 ## 🎙️ Running the Agent
@@ -71,4 +71,62 @@ You can run the agent in two primary modes:
 Run the agent locally within your terminal. It listens for your speech and responds directly in the console.
 
 ```bash
-uv run agent.py console
+python main.py console
+```
+or 
+
+```bash
+uv run main.py console
+```
+
+### B. Dev Mode
+
+This mode starts your agent in dev mode to connect it to LiveKit and make it available from anywhere on the internet:
+
+```bash
+python main.py dev
+```
+or 
+
+```bash
+uv run main.py dev
+```
+
+## 🚀 Part 2: Local Hosting (React Frontend) Setup
+
+This part uses the official LiveKit Agent Starter for React to create a modern web client. [Official Live Agent Starter](https://github.com/livekit-examples/agent-starter-react)
+
+
+### 2.1. Frontend Initialization
+
+1.  **Clone the React Starter:**
+    Run this command in a **separate directory** (outside your Python agent project) to create the Next.js frontend project.
+    ```bash
+    lk app create --template agent-starter-react
+    ```
+2.  **Install Node.js Packages:**
+    Navigate into the newly created React project directory (e.g., `agent-starter-react`) and install dependencies using `pnpm`.
+    ```bash
+    pnpm install
+    ```
+
+### 2.2. Frontend Configuration
+
+1.  **Set LiveKit Credentials (`.env.local`):**
+    Create a `.env.local` file in the **root of the React project directory** and add your LiveKit credentials. These credentials are used by the frontend to connect to the LiveKit server.
+
+    ```ini
+    # .env.local (in the React project folder)
+    LIVEKIT_API_KEY=<Your LiveKit API Key>
+    LIVEKIT_API_SECRET=<Your LiveKit API Secret>
+    LIVEKIT_URL=https://your-livekit-server-url
+    ```
+    > **Note:** Use the **`https://` (non-websocket)** format for the `LIVEKIT_URL` in this frontend configuration.
+
+### 2.3. Running the Frontend
+
+Start the Next.js development server:
+
+```bash
+pnpm dev
+```
