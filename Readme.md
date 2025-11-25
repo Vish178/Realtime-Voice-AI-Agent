@@ -1,4 +1,4 @@
-# 🗣️ LiveKit Voice Assistant
+# 🗣️ Realtime-Voice-AI-Agent (LiveKit)
 
 This is a real-time voice assistant built using **LiveKit Agents for Python**. It uses an **OpenAI Realtime Model** pipeline with LiveKit's **noise cancellation** plugin to provide a low-latency, conversational experience.
 
